@@ -11,7 +11,7 @@
         <input type="text" id="lastName" name="lastName" required v-model="actor.lastName" onClick="this.select();" >
       </p>
       <p><button v-on:click="addActor()"  >Agregar Actor</button></p>
-      <p id="demo"></p>
+
 
 
   </div>
@@ -31,21 +31,17 @@
           alert("Tus campos no fueron llenados");
         }
         else if (firstName.value == 0){
-          alert("No podemos ingresar a tu actor sin nombre");
+          alert("Favor Llenar Campo de Nombre");
         }
         else if (lastName.value == 0){
-          alert("No podemos ingresar a tu actor sin apellido");
+          alert("Favor Llenar Campo Apellido");
         }
         else{
-            var txt;
-              if (confirm("Deseas agregar a " + firstName.value + "?" ) == true) {
-                txt = "usuario creado";
-                this.$http.post('http://localhost:8080/TBDTaller1/actors', this.actor);
-              }
-              else {
-                txt = "cancelaste la creacion de tu actor";
-              }
-              document.getElementById("demo").innerHTML = txt;
+
+              this.$http.post('http://localhost:8080/TBDTaller1/actors', this.actor);
+              alert("Actor Creado");
+
+
           }
         }
       }
